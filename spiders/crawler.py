@@ -16,11 +16,7 @@ class CrawlerSpider(scrapy.Spider):
 
     def build_request(self):
         url = f"https://www.redfin.com/city/30818/TX/Austin/page-{self.pagination}"
-        return scrapy.Request(url=url, callback=self.parse, headers=self.headers,
-            #                   meta={"playwright": True, "playwright_page_methods":[
-            # PageMethod("evaluate", "window.scrollTo(0, document.body.scrollHeight)"),
-            # PageMethod("wait_for_timeout", 1000),]}
-            )
+        return scrapy.Request(url=url, callback=self.parse, headers=self.headers)
 
     async def start(self):
         yield self.build_request()
